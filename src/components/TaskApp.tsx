@@ -12,12 +12,18 @@ export const TaskApp = () => {
       new Task("Buy Groceries", false),
     ]);
 
+
+
+    const removeTask = (name: string) => {
+      setTasks(tasks.filter((task) => task.name !== name));
+    };
+
     return (
         <>
         <h3>TaskMaster</h3>
         <AddTask/>
         {tasks.map((task) =>{
-            return <UpdateTask task={task} />;
+            return  <UpdateTask task={task} removetask={removeTask} />;
         })}
         
         </>
