@@ -12,6 +12,10 @@ export const TaskApp = () => {
       new Task("Buy Groceries", false),
     ]);
 
+    const addTask = (createdNewTask: string) => {
+        setTasks([...tasks, new Task(createdNewTask, false)])
+    }
+
 
 
     const removeTask = (name: string) => {
@@ -20,8 +24,8 @@ export const TaskApp = () => {
 
     return (
         <>
-        <h3>TaskMaster</h3>
-        <AddTask/>
+        <h1>TaskMaster</h1>
+        <AddTask addTask={addTask}/>
         {tasks.map((task) =>{
             return  <UpdateTask task={task} removetask={removeTask} />;
         })}

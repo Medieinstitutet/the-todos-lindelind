@@ -1,10 +1,27 @@
+import { useState } from "react"
+
+interface IAddTaskProps {
+    addTask: (createdNewTask: string) => void;
+}
 
 
-export const AddTask = () => {
 
+export const AddTask = (props: IAddTaskProps) => {
+    const [newTaskName, setNewTaskName] = useState("");
+
+    const handleClick = () => {
+        props.addTask(newTaskName);
+    }
+
+    const handleChange = (e) => {
+        setNewTaskName(e.target.value);
+
+    }
+    
     return (
         <>
-        AddTask
+        <input className="input-box" type="input" placeholder="Enter a task" value={newTaskName} onChange={handleChange} />
+        <button onClick={handleClick}>Add task</button>
         </>
     )
 }
