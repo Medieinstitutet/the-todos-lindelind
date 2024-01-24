@@ -16,9 +16,13 @@ export const UpdateTask = (props: IUpdateTaskProps) => {
     }
 
     return (
-        <>
-        <p>{props.task.name} {props.task.isDone}</p>
-        <button onClick={clickRemove}>Ta bort</button>
-        </>
-    )
+      <>
+        <p>
+          {props.task.name} {props.task.isDone}
+          <button className="remove-button" onClick={clickRemove}>
+            Delete
+          </button>
+        </p>
+      </>
+    );
 }
