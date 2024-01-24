@@ -53,6 +53,14 @@ export const TaskApp = () => {
     setTasks(tasks.filter((task) => task.name !== name));
   };
 
+  const sortByDone = () => {
+    setTasks(
+      [...tasks].sort((taskA, taskB) =>
+        taskA.isDone === taskB.isDone ? 0 : taskA.isDone ? 1 : -1
+      )
+    );
+  }
+
   return (
     <>
       <h1>TaskMaster</h1>
@@ -66,6 +74,7 @@ export const TaskApp = () => {
           key={task.name}
         />
       ))}
+      <button className="sort-button" onClick={sortByDone}>Sort by done</button>
     </>
   );
 };
