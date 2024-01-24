@@ -65,6 +65,10 @@
   transform: scale(0.9);
 }
 
+.done {
+  text-decoration: line-through red 2px;
+}
+
 @media (max-width: 1024px) {
   .input-box {
     width: 92%;

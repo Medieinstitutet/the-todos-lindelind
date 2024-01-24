@@ -20,6 +20,31 @@ export const TaskApp = () => {
     setTasks(tasks.filter((task) => task.name !== name));
   };
 
+  const markAsDone = (name:string) => {
+    setTasks(
+        tasks.map((task) => {
+            if(task.name === name) {
+                return {...task, isDone: true};
+            } else {
+                return task;
+            }
+        })
+    )
+  }
+
+  const markUnDone = (name:string) => {
+     setTasks(
+        tasks.map((task) => {
+            if(task.name === name) {
+                return {...task, isDone: false};
+            } else {
+                return task;
+            }
+        })
+    )
+  }
+  
+
   return (
     <>
       <h1>TaskMaster</h1>
@@ -27,6 +52,8 @@ export const TaskApp = () => {
       {tasks.map((task) => (
         <UpdateTask 
         task={task} 
+        taskdone={markAsDone}
+        taskundone={markUnDone}
         removetask={removeTask} 
         key={task.name} />
       ))}
