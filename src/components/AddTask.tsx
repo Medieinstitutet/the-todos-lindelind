@@ -9,8 +9,9 @@ interface IAddTaskProps {
 export const AddTask = (props: IAddTaskProps) => {
     const [newTaskName, setNewTaskName] = useState("");
 
-    const handleClick = () => {
+    const handleClick = (e) => {
         props.addTask(newTaskName);
+        e.preventDefault();
     }
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
