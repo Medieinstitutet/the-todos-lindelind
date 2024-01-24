@@ -7,10 +7,11 @@
 }
 
 .input-box {
+  font-family: monospace;
   width: 93%;
   border-radius: 30px;
   padding: 18px 30px;
-  font-size: 20px;
+  font-size: 15px;
   border: none;
   transition: 0.2s;
   box-shadow: inset 0 0 5px black;
@@ -74,19 +75,43 @@
   margin: 10px;
 }
 
+.sort-button {
+  font-family: monospace;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  background-color: rgb(69, 69, 69);
+}
+.sort-button:hover {
+  background-color: #6c6c6c;
+}
+
+.sort-button:active {
+    transform: scale(0.9);
+    box-shadow: 0 0 5px black
+}
+
 @media (max-width: 1024px) {
   .input-box {
-    width: 92%;
+    width: 90%;
   }
 }
+
 
 @media (max-width: 768px) {
   .input-box {
-    width: 89%;
+    width: 87%;
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 600px) {
+  .input-box {
+    width: 83%;
+  }
+}
+
+
+@media (max-width: 490px) {
   .input-box {
     width: 77%;
   }

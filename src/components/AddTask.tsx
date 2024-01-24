@@ -4,8 +4,6 @@ interface IAddTaskProps {
     addTask: (createdNewTask: string) => void;
 }
 
-
-
 export const AddTask = (props: IAddTaskProps) => {
     const [newTaskName, setNewTaskName] = useState("");
     
