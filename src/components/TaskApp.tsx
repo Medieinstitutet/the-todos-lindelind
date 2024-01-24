@@ -1,18 +1,51 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Task } from "../models/Task";
 import { UpdateTask } from "./UpdateTask";
 import { AddTask } from "./AddTask";
 
 export const TaskApp = () => {
-  const [tasks, setTasks] = useState<Task[]>([
-    new Task("Do laundry", false),
-    new Task("Vacuum the house", false),
-    new Task("Take out the trash", false),
-    new Task("Walk the dog", false),
-    new Task("Buy Groceries", false),
-  ]);
+  const initialTasks = localStorage.getItem("tasks");
+  const [tasks, setTasks] = useState<Task[]>(
+    initialTasks ? JSON.parse(initialTasks):
+       [
+          new Task("Do laundry", false),
+          new Task("Vacuum the house", false),
+          new Task("Take out the trash", false),
+          new Task("Walk the dog", true),
+          new Task("Buy Groceries", false),
+        ]
+  );
 
-  const addTask = (createdNewTask: string) => {
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+
+  const markAsDone = (name: string) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.name === name) {
+          return { ...task, isDone: true };
+        } else {
+          return task;
+        }
+      })
+    );
+  };
+
+  const markUnDone = (name: string) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.name === name) {
+          return { ...task, isDone: false };
+        } else {
+          return task;
+        }
+      })
+    );
+  };
+
+  const addANewTask = (createdNewTask: string) => {
     setTasks([...tasks, new Task(createdNewTask, false)]);
   };
 
@@ -20,42 +53,18 @@ export const TaskApp = () => {
     setTasks(tasks.filter((task) => task.name !== name));
   };
 
-  const markAsDone = (name:string) => {
-    setTasks(
-        tasks.map((task) => {
-            if(task.name === name) {
-                return {...task, isDone: true};
-            } else {
-                return task;
-            }
-        })
-    )
-  }
-
-  const markUnDone = (name:string) => {
-     setTasks(
-        tasks.map((task) => {
-            if(task.name === name) {
-                return {...task, isDone: false};
-            } else {
-                return task;
-            }
-        })
-    )
-  }
-  
-
   return (
     <>
       <h1>TaskMaster</h1>
-      <AddTask addTask={addTask} />
+      <AddTask addTask={addANewTask} />
       {tasks.map((task) => (
-        <UpdateTask 
-        task={task} 
-        taskdone={markAsDone}
-        taskundone={markUnDone}
-        removetask={removeTask} 
-        key={task.name} />
+        <UpdateTask
+          task={task}
+          taskdone={markAsDone}
+          taskundone={markUnDone}
+          removetask={removeTask}
+          key={task.name}
+        />
       ))}
     </>
   );
