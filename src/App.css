@@ -6,3 +6,18 @@
   text-align: center;
 }
 
+.input-box {
+    width: 93%;
+    border-radius: 30px;
+    padding: 18px 30px;
+    font-size: 20px;
+    border: none;
+    transition: 0.2s;
+    box-shadow: inset 0 0 5px black;
+}
+
+.input-box:focus {
+
+    box-shadow: 0 0 10px 1000px rgb(0, 0 , 0, 0.5);
+    outline: none;
+}
