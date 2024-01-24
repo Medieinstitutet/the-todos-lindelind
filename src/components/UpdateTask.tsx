@@ -9,33 +9,38 @@ interface IUpdateTaskProps {
 }
 
 export const UpdateTask = (props: IUpdateTaskProps) => {
-
-    const clickDone = () => {
-        props.taskdone(props.task.name)
+  const handleCheckbox = () => {
+    if (props.task.isDone) {
+      props.taskundone(props.task.name);
+    } else {
+      props.taskdone(props.task.name);
     }
+  };
 
-     const clickUndone = () => {
-       props.taskundone(props.task.name);
-     };
+  const clickRemove = () => {
+    props.removetask(props.task.name);
+  };
 
+  return (
+    <>
+      <p>
+        <input
+          className="input-checkbox"
+          type="checkbox"
+          checked={props.task.isDone}
+          onChange={handleCheckbox}
+        />
 
-    const clickRemove = () => {
-        props.removetask(props.task.name)
-    }
-
-    return (
-      <>
-        <p className = {props.task.isDone ? "done" : ""}> {props.task.name} 
-        <button onClick={clickDone}>Done</button> 
-        <button onClick={clickUndone}>Undone</button>
+        <span className={props.task.isDone ? "done" : ""}>
+          {props.task.name}{" "}
           <img
             src={deleteimg}
             onClick={clickRemove}
             className="remove-button"
             alt="remove task"
           />
-
-        </p>
-      </>
-    );
+        </span>
+      </p>
+    </>
+  );
 }

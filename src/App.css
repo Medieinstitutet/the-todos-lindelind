@@ -67,6 +67,11 @@
 
 .done {
   text-decoration: line-through red 2px;
+  
+}
+
+.input-checkbox {
+  margin: 10px;
 }
 
 @media (max-width: 1024px) {
