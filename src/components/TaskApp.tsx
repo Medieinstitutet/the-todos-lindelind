@@ -27,7 +27,8 @@ export const TaskApp = () => {
       {tasks.map((task) => (
         <UpdateTask 
         task={task} 
-        removetask={removeTask} />
+        removetask={removeTask} 
+        key={task.name} />
       ))}
     </>
   );
