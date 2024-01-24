@@ -48,15 +48,17 @@
   
 }
 
+.input-button:active {
+    transform: scale(0.8);
+    box-shadow: 0 0 5px black
+}
+
 .input-button:hover {
   background-color: #438a3d;
 }
 
 .remove-button {
-  padding: 5px;
-  border-radius: 50px;
-  background-color: red;
-  border: none;
+  width: 20px;
 }
 
 .remove-button:hover {

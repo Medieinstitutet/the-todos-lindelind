@@ -1,4 +1,5 @@
 import { Task } from "../models/Task"
+import deleteimg from "../images/delete.png"
 
 interface IUpdateTaskProps {
     task: Task;
@@ -19,9 +20,7 @@ export const UpdateTask = (props: IUpdateTaskProps) => {
       <>
         <p>
           {props.task.name} {props.task.isDone}
-          <button className="remove-button" onClick={clickRemove}>
-            Delete
-          </button>
+          <img src={deleteimg} onClick={clickRemove} className="remove-button" alt = "remove task" />
         </p>
       </>
     );
