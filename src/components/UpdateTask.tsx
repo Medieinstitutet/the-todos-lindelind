@@ -1,5 +1,5 @@
 import { Task } from "../models/Task"
-import deleteimg from "../images/delete.png"
+import deleteimg from "../images/delete2.png"
 
 interface IUpdateTaskProps {
     task: Task;
@@ -23,7 +23,7 @@ export const UpdateTask = (props: IUpdateTaskProps) => {
 
   return (
     <>
-      <p>
+      <p className="task-container">
         <input
           className="input-checkbox"
           type="checkbox"
@@ -31,7 +31,7 @@ export const UpdateTask = (props: IUpdateTaskProps) => {
           onChange={handleCheckbox}
         />
 
-        <span className={props.task.isDone ? "done" : ""}>
+        <span className={`task-info ${props.task.isDone ? "done" : ""}`}>
           {props.task.name}{" "}
           <img
             src={deleteimg}

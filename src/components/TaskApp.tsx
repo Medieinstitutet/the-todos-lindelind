@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Task } from "../models/Task";
 import { UpdateTask } from "./UpdateTask";
 import { AddTask } from "./AddTask";
+import filterimg from "../images/filterblue.png";
 
 export const TaskApp = () => {
   const initialTasks = localStorage.getItem("tasks");
@@ -74,7 +75,8 @@ export const TaskApp = () => {
           key={task.name}
         />
       ))}
-      <button className="sort-button" onClick={sortByDone}>Sort by done</button>
+      
+      <img src={filterimg}className="sort-button" onClick={sortByDone}/>
     </>
   );
 };
